@@ -1,0 +1,37 @@
+<BODY COLOR=black BACKGROUND=..\gfx/backdrop.jpg BGPROPERTIES=FIXED><FONT FACE=Verdana SIZE=2><font face=Verdana size=2>
+<font size=3><b>
+INIT SIRD
+</b></font>
+<BR>
+<p>
+This command <i>must</i> be called before either RENDER SIRD or UPDATE SIRD are called.<br />
+<br />
+Initializing the SIRD involves letting the DLL know which images it should use for input and output. As well as this, which camera view-port should be used to capture 3D from.<br />
+<br />
+The images that are being passed into this function MUST have been previously loaded with the Texture Flag set to 1 so it is pixel perfect.<br />
+<br />
+The Random Dot Image can have a size ranging from 1x1 to 256x256. Any size bigger than this will cause errors.<br />
+The size of this image determines the smoothness and quality of the resulting SIRD - A higher resolution means more 'layers' within the SIRD. However, this also means that they eyes have to be bent further out of focus to see the image. A good medium is 128x128, although some people may still have trouble focusing on this aswell.<br />
+<br />
+The Output Image Must be the same resolution as the screen, if it is not this will cause errors.<br />
+<br />
+The Maximum depth (specified in world units) also helps control quality.<br />
+By specifying a depth that is a long way into the screen, more has to be rendered into the SIRD, which means to be able to see the difference between objects that are very far and objects very near, you have to re-focus your eyes too much and the illusion is lost.<br />
+Generally, this should be kept relatively low, meaning that objects which would be about 5 meters away should be just visible<br />
+<br />
+</p>
+<font size=3><b>
+Syntax
+</b></font>
+<p>INIT SIRD Output Image Number, Random Dot Image Number, Camera Number, Maximum Depth<BR>
+</p><ul>
+</ul>
+<font size=3><b>
+Related Information
+</b></font>
+<p>
+<a href="..\sirds.htm">SIRDS Commands Menu<BR>
+</a>
+<a href="..\..\index.htm">Index</a><BR>
+</p>
+</FONT></BODY>

@@ -1,0 +1,67 @@
+remstart
+/*****************************************************************
+/*    Written by Jess Telford
+/*    16th October 2006
+/*
+/*    You are free to use and edit the following code at your own
+/*       discretion
+/*    No warranty is implied, and the Author is not to be held
+/*       responsible for any damage done by using this free software.
+/*
+/*****************************************************************/
+remend
+
+
+` Set-up our environment
+Sync On : Sync Rate 0 : Draw To Front
+Set Display Mode 1024, 768, 32
+AutoCam Off
+
+Ink RGB(255, 255, 255), 0
+Set Text Opaque
+
+` This image is the Random Dot Image
+Load Image ".\img.png", 1, 1
+` This image is the output Image
+Load Image ".\sird.png", 2, 1
+
+` Make the thing we want to see
+Make Object Cube 1, 10
+
+` Weird results if we don't do this... Don't know why
+Make Object Triangle 0xFFFFFF, 0,0,0,0,0,0,0,0,0
+
+` Set up the camera position, etc
+Position Camera 0, 0, 10, -10
+Point Camera 0, 0, 0, 0
+Move Camera -10
+
+` Set the output image to be the one we want, and tell the funciton
+`  which is the Random Dot Image.
+`  Set the maximum draw depth to 30 units (past the object, but not too far)
+INIT SIRD 2, 1, 0, 30
+
+Do
+
+   ` Manipulate the object
+   YRotate Object 1, WrapValue(Object Angle Y(1) + 1)
+
+   ` Update the internal 3D data for the SIRD
+   UPDATE SIRD
+
+   ` Render the Sird to the output image (2)
+   RENDER SIRD
+
+   ` Paste the output image to the screen
+   Paste Image 2, 0, 0
+
+   ` Display the FPS
+   Text Screen Width() - 100, Screen Height() - 20, "FPS: " + Str$(Screen FPS())
+
+`Loop
+Sync
+Loop
+
+` Clean up the images we used
+If Image Exist(1) : Delete Image 1 : EndIf
+If Image Exist(2) : Delete Image 2 : EndIf

@@ -1,0 +1,6 @@
+
+To install
+----------
+
+Extract the contents of the 'Release' folder directly to your DBP installation directory.
+This will isntall the DLL, the Keywords file, and the Help files.
